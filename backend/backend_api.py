@@ -6,7 +6,7 @@ from starlette.responses import StreamingResponse
 app = FastAPI()
 
 audio_route = "/api/audio"
-test_file = "test.wav"
+test_file = "sample.mp3"
 content_type = "audio/mpeg"
 
 

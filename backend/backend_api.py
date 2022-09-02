@@ -4,9 +4,19 @@ from typing import Dict
 import uvicorn
 from fastapi import FastAPI, UploadFile, HTTPException
 from pydantic import BaseModel
+from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import StreamingResponse
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins="*",
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "DELETE", "PATCH"],  # ["*"],
+    allow_headers=["*", "access-control-allow-credentials", "access-control-allow-origin", "authorization", "content-type"],  # ["*"],
+
+)
 
 audio_route = "/api/audio"
 test_file = "sample.mp3"

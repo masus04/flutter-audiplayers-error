@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.deepOrange,
+          secondaryHeaderColor: Colors.blueGrey.shade500,
       ),
       home: const AudioErrorView(),
     );

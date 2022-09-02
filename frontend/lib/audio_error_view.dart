@@ -51,7 +51,7 @@ class _AudioErrorViewState extends State<AudioErrorView> {
             Container(
               height: 200,
               width: 300,
-              color: Colors.grey,
+              color: latestFileName == null ? Colors.grey.shade400 : Theme.of(context).secondaryHeaderColor,
               child: Center(
                 child: latestFileName != null
                     ? Text(
@@ -68,9 +68,10 @@ class _AudioErrorViewState extends State<AudioErrorView> {
                 Tooltip(
                   message: "Resume Audio",
                   child: IconButton(
-                    color: Colors.red,
+                    color: Theme.of(context).primaryColor,
                     iconSize: 50,
                     onPressed: () {
+                      // audioPlayer.setSourceUrl("$audioURL/$latestFileName");  // This does not solve the issue
                       audioPlayer.resume();
 
                       setState(() {
@@ -84,10 +85,12 @@ class _AudioErrorViewState extends State<AudioErrorView> {
                 Tooltip(
                   message: "Pause Audio",
                   child: IconButton(
-                    color: Colors.red,
+                    color: Theme.of(context).primaryColor,
                     iconSize: 50,
                     onPressed: () {
+                      // Both pause & stop result in the same issue
                       audioPlayer.pause();
+                      // audioPlayer.stop();
                       setState(() {
                         audioPlayer = audioPlayer;
                       });
@@ -120,6 +123,7 @@ class _AudioErrorViewState extends State<AudioErrorView> {
     audioPlayer.setSourceUrl("$audioURL/${file.name}");
 
     setState(() {
+      audioPlayer = audioPlayer;
       latestFileName = file.name;
     });
 

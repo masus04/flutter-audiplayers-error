@@ -19,3 +19,7 @@ Then run the Flutter Frontend as a web application either using an IDE or using 
 cd frontend # cd to the root of the frontend project
 flutter run -d chrome
 ```
+
+
+## Update
+The error has been addressed in the meantime
